@@ -14,7 +14,9 @@ const getUserInformation = async function (userId, userPassword) {
 
     //console.log(resp.dataValues.password) //at this point resp HAS password data
     let loginSuccessfull = false
-    loginSuccessfull = bcrypt.compareSync(userPassword, resp.dataValues.password);
+    if (resp){
+      loginSuccessfull = bcrypt.compareSync(userPassword, resp.dataValues.password);
+    }
     
 
     const pokemonIdArray = []
@@ -27,7 +29,8 @@ const getUserInformation = async function (userId, userPassword) {
         for (let i=0;i<pokemonIdArray.length;i++)resp.dataValues.pokemons.push(pokemonIdArray[i])  
     }
     
-    if (!resp) throw new Error("No User found with the provided ID...")
+    if (!resp) return "login failed"
+    //throw new Error("No User found with the provided ID...")
 
     if (loginSuccessfull) return resp.dataValues
     //else throw new Error("Login Failed")
