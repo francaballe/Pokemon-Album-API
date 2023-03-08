@@ -4,10 +4,10 @@ const getUserInformation = require("../controllers/getUserInformation");
 const createUser = require("../controllers/createUser");
 
 
-router.get("/", async function (req,res){
+router.patch("/", async function (req,res){
     const { id, password} = req.body
 
-    if (id){
+    if (id && password){
         try{
             const respuesta = await getUserInformation(id, password);
             //console.log(respuesta)
@@ -17,6 +17,7 @@ router.get("/", async function (req,res){
         }  
     }
 });
+
 
 router.post("/", async function (req, res){
         

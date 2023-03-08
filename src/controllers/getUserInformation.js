@@ -2,6 +2,8 @@ const { User, Pokemon } = require('../db');
 const bcrypt = require('bcrypt');
 
 const getUserInformation = async function (userId, userPassword) {
+
+  //console.log("userId, userPassword:",userId, userPassword)
     
   try{
     const resp = await User.findByPk(userId,
@@ -26,10 +28,10 @@ const getUserInformation = async function (userId, userPassword) {
     }
     
     if (!resp) throw new Error("No User found with the provided ID...")
-    //console.log("hola:",resp.dataValues)
 
     if (loginSuccessfull) return resp.dataValues
-    else throw new Error("Login Failed")
+    //else throw new Error("Login Failed")
+    else return "login failed"
 
   }catch(unError){
     throw new Error(unError.message)
