@@ -4,6 +4,8 @@ const getUserInformation = require("../controllers/getUserInformation");
 const createUser = require("../controllers/createUser");
 
 
+//I'm using patch as a solution since get will not work with body (from the frontend at least. I does using Insomnia)
+//So this is used to loggin, provided user and password
 router.patch("/", async function (req,res){
     const { id, password} = req.body
 
