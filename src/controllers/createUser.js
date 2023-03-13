@@ -28,8 +28,7 @@ if (picture && typeof(picture)!=="string"){
 }
 
 //Minimum 6 and maximum 10 chars. At least 1 uppercase letter, 1 lowercase letter, 1 number and 1 special character:
-//"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,10}$"
-if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,10}$/u.test(password)){
+if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!#%*?&])[A-Za-z\d@$!#%*?&]{6,10}$/u.test(password)){
   throw new Error("Error: Passwords must have a Minimum 6 and maximum 10 characters. At least 1 uppercase letter, 1 lowercase letter, 1 number and 1 special character.")
 }
 
