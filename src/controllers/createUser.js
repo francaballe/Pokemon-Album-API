@@ -10,7 +10,8 @@ const { id, name, lastname, password, picture } = data;
 //Data Validation
 try{
   const findUser = await User.findByPk(id);
-  if (findUser!==null) throw new Error("Error: User already exists")
+  if (findUser!==null) //throw new Error("Error: User already exists")
+  return "User already exists"
 }catch(unError){
   throw new Error(unError.message)
 }
