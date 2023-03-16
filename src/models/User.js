@@ -1,4 +1,4 @@
-const { DataTypes } = require('sequelize');
+const { DataTypes, NUMBER } = require('sequelize');
 
 module.exports = (sequelize) => {
 
@@ -22,6 +22,11 @@ module.exports = (sequelize) => {
     },
     picture: {
       type: DataTypes.STRING
+    },
+    unopenedenvelopes: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0,
+      allowNull: false
     }
   },
   {
