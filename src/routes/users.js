@@ -2,12 +2,13 @@ const { Router } = require('express');
 const router = Router();
 const getUserInformation = require("../controllers/getUserInformation");
 const createUser = require("../controllers/createUser");
+const updateUser = require("../controllers/updateUser");
 
 
-//I'm using patch as a solution since get will not work with body (from the frontend at least. I does using Insomnia)
+//I'm using patch as a solution since "get" will not work with body (from the frontend at least. It does using Insomnia)
 //So this is used to loggin, provided user and password
 router.patch("/", async function (req,res){
-    const { id, password} = req.body
+    const { id, password } = req.body
 
     if (id && password){
         try{
@@ -41,19 +42,16 @@ router.post("/", async function (req, res){
     }
 }); */
 
-/* router.put("/:_id", async (req, res) => {
-    
-    const { _id } = req.params;
-    //const { name, description, origin, type, stock, category} = req.body;
+router.put("/", async (req, res) => {
     
     try{
-        let respuesta = await updateProduct(_id,req.body);
+        let respuesta = await updateUser(req.body);
         res.send(respuesta);
     }catch(unError){
         res.status(400).send(unError.message);
     }
     
-}) */
+})
 
 /* router.delete("/:_id", async (req, res) => {
 

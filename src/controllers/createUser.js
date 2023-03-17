@@ -36,10 +36,14 @@ if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!#%*?&])[A-Za-z\d@$!#%*?&]{6,10}$/u
 const saltRounds = 10;
 const hash = bcrypt.hashSync(password, saltRounds);
 
-  try{
-    //console.log("hash:",hash) //Replacing the provided password for the new one hashed in order to store it on the DB.
-    data.password = hash
+//console.log("hash:",hash) //Replacing the provided password for the new one hashed in order to store it on the DB.
+data.password = hash
 
+//As per security reasons I did it to avoig funny people creating new users with 100000 envelopes...not funny to be honest!!!
+data.unopenedenvelopes = 0;
+
+  try{
+    
     const newUser = await User.create(data);
     //return newUser;
     return "User Created OK"
