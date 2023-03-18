@@ -5,7 +5,7 @@ const { CROSS_ACCESS_TOKEN } = process.env;
 
 const updateUser = async function (data) {
 
-    const { id, unopenedenvelopes, token } = data
+    const { id, unopenedenvelopes, token, pokemons } = data    
 
     //Data Validation
     try{
@@ -22,9 +22,9 @@ const updateUser = async function (data) {
     if (token!==CROSS_ACCESS_TOKEN){
       throw new Error("Error: token validation did not pass.")
     }
-    
+
       try{
-        const updateEnvelopesData = await User.update(
+        /* const updateEnvelopesData =  */await User.update(
           {
             unopenedenvelopes: unopenedenvelopes
           },
@@ -32,6 +32,10 @@ const updateUser = async function (data) {
             where: { id: id }
           }
           );
+
+          const currentUser = await User.findByPk(id)
+          await currentUser.addPokemons(pokemons)          
+
         return "User Updated OK"  
 
       }catch(unError){
