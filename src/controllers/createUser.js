@@ -39,7 +39,7 @@ const hash = bcrypt.hashSync(password, saltRounds);
 //console.log("hash:",hash) //Replacing the provided password for the new one hashed in order to store it on the DB.
 data.password = hash
 
-//As per security reasons I did it to avoig funny people creating new users with 100000 envelopes...not funny to be honest!!!
+//As per security reasons I did this to avoid funny people creating new users with 100000 envelopes...not funny to be honest!!!
 data.unopenedenvelopes = 0;
 
   try{
