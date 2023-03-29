@@ -35,6 +35,7 @@ const purchaseProduct = async function (data) {
         email: email,
       },
       items: totalPurchase, // por cada producto un item
+      auto_return: 'approved',
       back_urls: {
         "success": "http://localhost:3000/pokemons",
         "failure": "http://localhost:3000/pokemons",
