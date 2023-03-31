@@ -3,8 +3,6 @@ const router = Router();
 const getPokemons = require("../controllers/getPokemons");
 const randomizePokemonStars = require("../controllers/randomizePokemonStars")
 const getPokemonById = require("../controllers/getPokemonById.js");
-//const getPokemonByName = require("../controllers/getPokemonByName.js");
-//const createPokemon = require("../controllers/createPokemon.js");
 
 
 router.get("/randomize", async function (req,res){
@@ -16,28 +14,14 @@ router.get("/randomize", async function (req,res){
     }   
 })
 
-router.get("/", async function (req,res){
-    const { name } = req.query;
-    //console.log("el name funciona y es:",name)
-    if (name){
-        /* try{
-            const respuesta = await getPokemonByName(name);
-            console.log(respuesta)
-            res.send(respuesta);
-        }catch(unError){
-            res.status(400).send(unError.message);
-        }  */ 
-    }
-    else{
+router.get("/", async function (req,res){    
+        
         try {
-            const respuesta = await getPokemons();
-            //console.log("estoy parado en la ruta get de pokemons:",respuesta)
+            const respuesta = await getPokemons();    
             res.send(respuesta);
         }catch(unError){
             res.status(400).send(unError.message);
-        }   
-    }
-    
+        }       
 });     
 
 

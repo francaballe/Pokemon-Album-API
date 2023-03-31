@@ -32,15 +32,6 @@ router.post("/", async function (req, res){
     }
 });
 
-/* router.get("/:_idproduct", async function (req,res){
-    const { _idproduct } = req.params;
-    try {
-        const respuesta = await getProductById(_idproduct);
-        res.send(respuesta)
-    }catch(unError){
-        res.status(400).send(unError.message)
-    }
-}); */
 
 router.put("/", async (req, res) => {
     
@@ -52,16 +43,5 @@ router.put("/", async (req, res) => {
     }
     
 })
-
-/* router.delete("/:_id", async (req, res) => {
-
-    try{
-        const respuesta = await deleteProduct(req.params._id);
-        res.send(respuesta);
-    }catch(unError){
-        res.status(400).send(unError.message)
-    }
-  }); */
-
 
 module.exports = router;
